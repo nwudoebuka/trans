@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:layout_gravity="center"
+    android:id="@+id/home_lin"
+    android:gravity="top"
+    android:orientation="vertical" >
+
+    <!---->
+    <!--<android.support.v7.widget.ActionBarContextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</android.support.v7.widget.ActionBarContextView>-->
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To"
+        android:gravity="center"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimary"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/agonaikalogo"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mobile Workforce"
+        android:gravity="center"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/email_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:bottomRightRadius="10dp"
+        android:bottomLeftRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+
+        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:drawablePadding="2dip"
+        android:paddingLeft="30dip"
+        android:paddingRight="26dip"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="40dp"
+        android:text="Sign in with Email" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:textColor="#dd4b39"
+        android:textStyle="bold"
+        android:bottomRightRadius="10dp"
+        android:bottomLeftRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+
+        android:drawableLeft="@drawable/googleplus"
+        android:drawablePadding="2dip"
+        android:paddingLeft="30dip"
+        android:paddingRight="26dip"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="40dp"
+        android:text="Sign in with Google"  />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b5999"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:bottomRightRadius="10dp"
+        android:bottomLeftRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+
+        android:drawableLeft="@drawable/facebook"
+        android:drawablePadding="2dip"
+        android:paddingLeft="30dip"
+        android:paddingRight="26dip"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="40dp"
+        android:text="Sign in with Facebook"  />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login as Admin"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="100dp"
+
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+
+        android:layout_marginRight="100dp"/>
+
+</LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
