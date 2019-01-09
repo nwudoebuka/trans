@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Loginemail extends AppCompatActivity {
-TextView firsttime;
+TextView firsttime,forgotpassword;
 Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,11 @@ Button login;
         setContentView(R.layout.activity_loginemail);
         setTitle("Login");
         firsttime = findViewById(R.id.textViewfirsttime);
+        forgotpassword = findViewById(R.id.textViewforgotpassword);
         login = findViewById(R.id.emaillogintbn);
 
-      firsttime.setPaintFlags(firsttime.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        firsttime.setPaintFlags(firsttime.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        forgotpassword.setPaintFlags(forgotpassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

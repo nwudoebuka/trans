@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agonaika.agonaika">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,6 @@
         android:roundIcon="@mipmap/agonaikalogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -21,9 +22,11 @@
         </activity>
         <activity
             android:name=".Home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Loginemail" />
+        <activity android:name=".Facercognition" />
+        <activity android:name=".Clockin"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Loginemail"></activity>
-        <activity android:name=".Facercognition"></activity>
     </application>
 
 </manifest>
