@@ -25,8 +25,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Loginemail" />
         <activity android:name=".Facercognition" />
-        <activity android:name=".Clockin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Clockin"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Changedept"
+            android:label="@string/title_activity_changedept"></activity>
     </application>
 
 </manifest>
