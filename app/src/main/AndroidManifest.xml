@@ -31,7 +31,10 @@
         <activity
             android:name=".Changedept"
             android:label="@string/title_activity_changedept"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Timesheet"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

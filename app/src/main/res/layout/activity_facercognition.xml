@@ -76,7 +76,7 @@
                         android:background="@drawable/roundedbuttonbg"
                         android:textColor="#ffffff"
                         android:textStyle="bold"
-                        android:text="Manage Time" />
+                        android:text="Verify" />
 
     </LinearLayout>
 
