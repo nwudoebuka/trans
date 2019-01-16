@@ -66,10 +66,40 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="?attr/actionBarSize"/>
 
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Week ending dates"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="70dp"
+            android:textColor="@color/colorPrimary"
+
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hours"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:layout_gravity="right"
+            />
+
+
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview1"
         android:layout_width="fill_parent"
-        android:layout_below="@+id/location"
+        android:layout_below="@+id/description"
         android:layout_height="fill_parent"
         android:layout_marginBottom="?attr/actionBarSize"/>
 
