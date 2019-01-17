@@ -1,5 +1,7 @@
 package com.agonaika.agonaika;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,24 +24,33 @@ import com.android.volley.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Timesheet extends AppCompatActivity {
+public class Timeentry extends AppCompatActivity {
 
     String[] dummyarr1 = {
-            "01/20/199",
-            "14/08/2000",
-            "17/07/30",
-            "08/04/2002",
-            "12/09/2018"
+            "Outsidein Africa",
+            "Diamond Bank",
+            "Kunatalogic",
+            "App 24",
+            "Newage ltd"
     };
     String[] dummyarr2 = {
-            "No time",
-            "Cancled",
-            "not set",
-            "Verifying",
-            "working"
+            "Human Resource",
+            "Teller",
+            "App dev",
+            "C.E.O",
+            "App dev"
     };
 
-    List<DataAdapter> ListOfdataAdapter;
+
+    String[] dummyarr3 = {
+            "Recruitment",
+            "Deposits",
+            "Android",
+            "Management",
+            "IOS"
+    };
+
+    List<DataAdapter2> ListOfdataAdapter;
 
     RecyclerView recyclerView;
 
@@ -62,17 +73,17 @@ public class Timesheet extends AppCompatActivity {
     RecyclerView.Adapter recyclerViewadapter;
 
     ArrayList<String> ImageTitleNameArrayListForClick;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timesheet);
+        setContentView(R.layout.activity_timeentry);
+
 
         ImageTitleNameArrayListForClick = new ArrayList<>();
 
         ListOfdataAdapter = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview2);
 
         recyclerView.setHasFixedSize(true);
 
@@ -87,7 +98,7 @@ public class Timesheet extends AppCompatActivity {
         // Implementing Click Listener on RecyclerView.
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
-            GestureDetector gestureDetector = new GestureDetector(Timesheet.this, new GestureDetector.SimpleOnGestureListener() {
+            GestureDetector gestureDetector = new GestureDetector(Timeentry.this, new GestureDetector.SimpleOnGestureListener() {
 
                 @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
 
@@ -104,9 +115,9 @@ public class Timesheet extends AppCompatActivity {
 
                     //Getting RecyclerView Clicked Item value.
                     RecyclerViewItemPosition = Recyclerview.getChildAdapterPosition(view);
-                    startActivity(new Intent(Timesheet.this, Timeentry.class));
+                    //startActivity(new Intent(Timesheet.this, Timeentry.class));
                     // Showing RecyclerView Clicked Item value using Toast.
-                    //Toast.makeText(Timesheet.this, ImageTitleNameArrayListForClick.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
+                   Toast.makeText(Timeentry.this, ImageTitleNameArrayListForClick.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
                 }
 
                 return false;
@@ -144,7 +155,7 @@ public class Timesheet extends AppCompatActivity {
                     }
                 });
 
-        requestQueue = Volley.newRequestQueue(Timesheet.this);
+        requestQueue = Volley.newRequestQueue(Timeentry.this);
 
         requestQueue.add(RequestOfJSonArray);
     }
@@ -153,7 +164,7 @@ public class Timesheet extends AppCompatActivity {
 
         for(int i = 0; i<array.length(); i++) {
 
-            DataAdapter GetDataAdapter2 = new DataAdapter();
+            DataAdapter2 GetDataAdapter2 = new DataAdapter2();
 
             JSONObject json = null;
             try {
@@ -174,7 +185,7 @@ public class Timesheet extends AppCompatActivity {
             ListOfdataAdapter.add(GetDataAdapter2);
         }
 
-        recyclerViewadapter = new RecyclerViewAdapter(ListOfdataAdapter, this);
+        recyclerViewadapter = new RecyclerViewAdapter2(ListOfdataAdapter, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
     }
@@ -185,12 +196,13 @@ public class Timesheet extends AppCompatActivity {
         for(int i = 0; i<dummyarr1.length; i++) {
 
 
-            DataAdapter Dummydetail = new DataAdapter();
+            DataAdapter2 Dummydetail = new DataAdapter2();
             Dummydetail.setImageTitle(dummyarr1[i]);
             Dummydetail.setImageTitle2(dummyarr2[i]);
+            Dummydetail.setImageTitle3(dummyarr3[i]);
             //Toast.makeText(Timesheet.this, Dummydetail.getImageTitle(), Toast.LENGTH_LONG).show();
 
-        // Adding image title name in array to display on RecyclerView click event.
+            // Adding image title name in array to display on RecyclerView click event.
             ImageTitleNameArrayListForClick.add(dummyarr1[i]);
 
             Dummydetail.setImageUrl("https://vignette.wikia.nocookie.net/bungostraydogs/images/1/1e/Profile-icon-9.png/revision/latest?cb=20171030104015");
@@ -198,7 +210,7 @@ public class Timesheet extends AppCompatActivity {
             ListOfdataAdapter.add(Dummydetail);
         }
 
-        recyclerViewadapter = new RecyclerViewAdapter(ListOfdataAdapter, this);
+        recyclerViewadapter = new RecyclerViewAdapter2(ListOfdataAdapter, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
     }
