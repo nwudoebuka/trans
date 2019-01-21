@@ -117,7 +117,10 @@ public class Timeentry extends AppCompatActivity {
                     RecyclerViewItemPosition = Recyclerview.getChildAdapterPosition(view);
                     //startActivity(new Intent(Timesheet.this, Timeentry.class));
                     // Showing RecyclerView Clicked Item value using Toast.
-                   Toast.makeText(Timeentry.this, ImageTitleNameArrayListForClick.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
+                   //Toast.makeText(Timeentry.this, ImageTitleNameArrayListForClick.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
+
+                    startActivity(new Intent(Timeentry.this, Daytime.class));
+
                 }
 
                 return false;
