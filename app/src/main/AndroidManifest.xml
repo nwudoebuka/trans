@@ -35,8 +35,11 @@
         <activity
             android:name=".Timesheet"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Timeentry"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity
+            android:name=".Timeentry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Daytime"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
