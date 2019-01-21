@@ -20,7 +20,10 @@ public class Clockin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Clockin.this, Changedept.class));
+
+
+                CustomDialogClass3 alert = new CustomDialogClass3();
+                alert.showDialog(Clockin.this, "Clocked in Thu 10/01/19 10:05 Am");
 
 
             }
@@ -32,9 +35,9 @@ public class Clockin extends AppCompatActivity {
         clockin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+          //startActivity(new Intent(Clockin.this, Changedept.class));
+                startActivity(new Intent(Clockin.this, Timesheet.class));
 
-                CustomDialogClass alert = new CustomDialogClass();
-                alert.showDialog(Clockin.this, "Clocked in Thu 10/01/19 10:05 Am");
             }
 
         });

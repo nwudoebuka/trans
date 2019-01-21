@@ -31,7 +31,10 @@ usersimage = findViewById(R.id.userimg);
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Facercognition.this, Clockin.class));
+//                startActivity(new Intent(Facercognition.this, Clockin.class));
+
+                CustomDialogClass2 alert = new CustomDialogClass2();
+                alert.showDialog(Facercognition.this, "Clocked in Thu 10/01/19 10:05 Am");
 
 
             }
