@@ -53,7 +53,8 @@
         <activity
             android:name=".Register2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Register3"></activity>
+        <activity android:name=".Register3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
