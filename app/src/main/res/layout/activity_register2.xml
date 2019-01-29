@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Timeentry">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        >
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/imageView3"
+        app:srcCompat="@drawable/menu" />
+
+
+    <android.support.v4.widget.NestedScrollView android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/transparent"
+            android:id="@+id/home_lin"
+            android:gravity="top"
+            android:orientation="vertical" >
+
+            <!---->
+            <!--<android.support.v7.widget.ActionBarContextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--</android.support.v7.widget.ActionBarContextView>-->
+
+
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/agonaikalogo"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile Workforce"
+                android:gravity="center"
+                android:textSize="28dp"
+                android:textColor="@color/colorPrimary"/>
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:gravity="center"
+                android:textSize="28dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="First Name"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"/>
+
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Last Name"
+
+                        />
+
+
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Employee ID"
+
+                                />
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Company"
+
+                                    />
+
+
+
+                                <TextView
+                            android:id="@+id/already_registered"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Already registered? Sign in"
+                            android:gravity="center"
+                            android:textSize="15dp"
+                            android:textColor="@color/colorPrimary"/>
+
+                        <Button
+                            android:id="@+id/reg_next_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Next"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/roundedbuttonbg"
+                            android:layout_marginLeft="20dp"
+
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
+
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="50dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</RelativeLayout>
