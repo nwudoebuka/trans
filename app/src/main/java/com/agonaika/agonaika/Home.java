@@ -34,7 +34,7 @@ TextView register;
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Home.this, Registration1.class));
+                startActivity(new Intent(Home.this, Registermain.class));
 
 
             }
