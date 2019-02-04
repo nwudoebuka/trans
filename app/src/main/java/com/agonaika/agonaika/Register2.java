@@ -24,33 +24,33 @@ public class Register2 extends AppCompatActivity {
         final EditText empid = findViewById(R.id.employee_id);
         final EditText comp = findViewById(R.id.company_name);
 
-       // Button next = findViewById(R.id.reg_next_two);
+        Button next = findViewById(R.id.reg_next_two);
 
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Register2.firstname = fname.getText().toString();
-//                Register2.lastname = lname.getText().toString();
-//
-//                try {
-//                    Register2.employeeid = Integer.parseInt(empid.getText().toString());
-//                }
-//                catch (NumberFormatException e)
-//                {
-//                    Register2.employeeid = 0;
-//                }
-//                Register2.company = comp.getText().toString();
-//
-//                checkedittext(Register2.firstname,Register2.lastname,String.valueOf(Register2.employeeid),Register2.company);
-//                if (isedittextok) {
-//                    startActivity(new Intent(Register2.this, Register3.class));
-//
-//                }
-//
-//            }
-//
-//        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Register2.firstname = fname.getText().toString();
+                Register2.lastname = lname.getText().toString();
+
+                try {
+                    Register2.employeeid = Integer.parseInt(empid.getText().toString());
+                }
+                catch (NumberFormatException e)
+                {
+                    Register2.employeeid = 0;
+                }
+                Register2.company = comp.getText().toString();
+
+                checkedittext(Register2.firstname,Register2.lastname,String.valueOf(Register2.employeeid),Register2.company);
+                if (isedittextok) {
+                    startActivity(new Intent(Register2.this, Register3.class));
+
+                }
+
+            }
+
+        });
     }
 
     public void checkedittext(String firstnam, String lastnam, String employmntid, String compan){

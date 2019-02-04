@@ -19,14 +19,9 @@ public class Clockin extends AppCompatActivity {
         clockout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-                CustomDialogClass3 alert = new CustomDialogClass3();
+     CustomDialogClass3 alert = new CustomDialogClass3();
                 alert.showDialog(Clockin.this, "Clocked in Thu 10/01/19 10:05 Am");
-
-
-            }
+    }
 
         });
 
