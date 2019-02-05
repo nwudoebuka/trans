@@ -20,25 +20,25 @@ public class Registration1 extends AppCompatActivity {
         final EditText emailinput = findViewById(R.id.email);
         final EditText passwordinput = findViewById(R.id.password);
         final EditText confirmpasswordinput = findViewById(R.id.confirm_password);
-        //Button next = findViewById(R.id.reg_next_one);
+        Button next = findViewById(R.id.reg_next_one);
 
 
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                    checkedittext(emailinput.getText().toString(),passwordinput.getText().toString()
-//                            ,confirmpasswordinput.getText().toString());
-//
-//                if (isedittextok) {
-//                    Registration1.email = emailinput.getText().toString();
-//                    Registration1.password = passwordinput.getText().toString();
-//                    startActivity(new Intent(Registration1.this, Register2.class));
-//                }
-//
-//
-//            }
-//
-//        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    checkedittext(emailinput.getText().toString(),passwordinput.getText().toString()
+                            ,confirmpasswordinput.getText().toString());
+
+                if (isedittextok) {
+                    Registration1.email = emailinput.getText().toString();
+                    Registration1.password = passwordinput.getText().toString();
+                    startActivity(new Intent(Registration1.this, Register2.class));
+                }
+
+
+            }
+
+        });
     }
 
     public void checkedittext(String email, String password, String confirmpassword){

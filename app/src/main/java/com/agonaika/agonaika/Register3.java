@@ -75,7 +75,16 @@ public class Register3 extends AppCompatActivity implements AdapterView.OnItemSe
             @Override
             public void onClick(View view) {
 
+                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
 
+                // get selected radio button from radioGroup
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                RadioButton radioButton = (RadioButton) findViewById(selectedId);
+
+                Toast.makeText(Register3.this,
+                        radioButton.getText(), Toast.LENGTH_SHORT).show();
 //                // get selected radio button from radioGroup
 //                int selectedId = radioGroup1.getCheckedRadioButtonId();
 //
@@ -119,21 +128,21 @@ public class Register3 extends AppCompatActivity implements AdapterView.OnItemSe
 
 
 
-        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                                                  @Override
-                                                  public void onCheckedChanged(RadioGroup group, int checkedId)
-                                                  {
-                                                                      // get selected radio button from radioGroup
-                int selectedId = radioGroup1.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                RadioButton radioButton = (RadioButton) findViewById(selectedId);
-
-                Toast.makeText(Register3.this,
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
-                                                  }
-                                              }
-        );
+//        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//                                                  @Override
+//                                                  public void onCheckedChanged(RadioGroup group, int checkedId)
+//                                                  {
+//                                                                      // get selected radio button from radioGroup
+//                int selectedId = radioGroup1.getCheckedRadioButtonId();
+//
+//                // find the radiobutton by returned id
+//                RadioButton radioButton = (RadioButton) findViewById(selectedId);
+//
+//                Toast.makeText(Register3.this,
+//                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+//                                                  }
+//                                              }
+//        );
 
 
 
@@ -162,6 +171,8 @@ public class Register3 extends AppCompatActivity implements AdapterView.OnItemSe
 
 
     public void registerfunction(String memberCode, String email, int pin, String password, String lookupType, String lookupValue, String firstName, String lastName, boolean isNewEmployee, String mobilePhoneNumber, int mobileCarrierId, String prefContactAdjustment, String prefContactApproval, String prefContactPto){
+
+
         dialog = new ProgressDialog(Register3.this);
         dialog.setMessage("Please wait...");
         dialog.show();
@@ -172,16 +183,30 @@ public class Register3 extends AppCompatActivity implements AdapterView.OnItemSe
             @Override
             public void onResponse(Call<Registerresp> call, Response<Registerresp> response) {
                 Toast.makeText(Register3.this,response.code()+"",Toast.LENGTH_LONG).show();
-if (response.isSuccessful()) {
-    Registerresp data = response.body();
-    dialog.dismiss();
-    toastmsg = data.getFirstName();
-    Log.w("response", toastmsg);
-}else{
+            if(response.code() == 404) {
+                dialog.dismiss();
+                CustomDialogClassfail alert = new CustomDialogClassfail();
+                alert.showDialog(Register3.this, "This user is not yet recognised!");
+            }else if(response.code() == 200){
+
+                CustomDialogclasssuccess alert = new CustomDialogclasssuccess();
+                alert.showDialog(Register3.this, "Registeration Succesfull!");
+
+
+                if (response.isSuccessful()) {
+                    Registerresp data = response.body();
+                    dialog.dismiss();
+                    toastmsg = data.getFirstName();
+                    Log.w("response", toastmsg);
+                }else{
 
 
 
-}
+                }
+
+            }
+
+
 
 
 
@@ -206,5 +231,8 @@ if (response.isSuccessful()) {
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+
+
+
 
 }
