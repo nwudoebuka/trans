@@ -1,4 +1,4 @@
-package com.agonaika.agonaika;
+package com.agonaika.agonaika.Adapters;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,15 +10,18 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CustomDialogClass3 {
-    Context context;
-    Activity mactivity;
+import com.agonaika.agonaika.Clockin;
+import com.agonaika.agonaika.R;
+
+public class CustomDialogClass2 {
+Context context;
+Activity mactivity;
     public void showDialog(Activity activity, String msg){
-        mactivity = activity;
+      mactivity = activity;
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
-        dialog.setContentView(R.layout.custom_dialogue3);
+        dialog.setContentView(R.layout.custom_dialogue2);
 
 //        TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
 //        text.setText(msg);
@@ -28,7 +31,8 @@ public class CustomDialogClass3 {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-
+                Intent i = new Intent(mactivity, Clockin.class);
+                mactivity.startActivity(i);
 
             }
         });

@@ -6,43 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Timeentry">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:id="@+id/toolbar"
-        >
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--&gt;-->
 
-    </android.support.v7.widget.Toolbar>
-
-
+    <!--</android.support.v7.widget.Toolbar>-->
 
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="12dp"
-        app:srcCompat="@drawable/back" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/imageView3"
-        app:srcCompat="@drawable/menu" />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/back_reg_3"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:layout_marginLeft="12dp"-->
+        <!--app:srcCompat="@drawable/back" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView4"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_alignTop="@+id/imageView3"-->
+        <!--app:srcCompat="@drawable/menu" />-->
 
 
     <android.support.v4.widget.NestedScrollView android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+
         xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mobile Workforce"
                 android:gravity="center"
-                android:textSize="28dp"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimary"/>
 
 
@@ -86,13 +86,13 @@
                 android:layout_height="wrap_content"
                 android:text="Register"
                 android:gravity="center"
-                android:textSize="28dp"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimary"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="12dp">
+                >
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/mobile_number"
@@ -100,11 +100,12 @@
                     android:layout_height="wrap_content"
                     android:hint="Mobile Number"
                     android:imeOptions="actionNext"
+                    android:digits="0123456789+"
                     android:singleLine="true"
                     android:inputType="phone"/>
 
                 <Spinner
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/spinner"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -150,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+
                     android:layout_marginLeft="10dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -166,7 +167,7 @@
                         android:text="Text"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:layout_weight="0.4"/>
+                        android:layout_weight="0.2"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -174,7 +175,7 @@
                         android:text="Email"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:layout_weight="0.4"/>
+                        android:layout_weight="0.2"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -182,14 +183,14 @@
                         android:text="Both"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
-                        android:layout_weight="0.4"/>
+                        android:layout_weight="0.2"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -242,7 +243,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -295,7 +296,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -347,7 +348,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Register"
-                                android:layout_marginTop="40dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/roundedbuttonbg"
                                 android:layout_marginLeft="70dp"
 

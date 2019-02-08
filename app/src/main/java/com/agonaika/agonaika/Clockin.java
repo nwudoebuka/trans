@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.agonaika.agonaika.Adapters.CustomDialogClass3;
+
 public class Clockin extends AppCompatActivity {
 
     @Override
