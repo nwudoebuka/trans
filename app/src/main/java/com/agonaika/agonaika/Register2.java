@@ -3,10 +3,16 @@ package com.agonaika.agonaika;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import model.Publicfunctions;
 
 public class Register2 extends AppCompatActivity {
     public static String firstname;
@@ -14,6 +20,7 @@ public class Register2 extends AppCompatActivity {
     public static Integer employeeid;
     public static String company;
     private boolean isedittextok;
+    Publicfunctions pubfunc = new Publicfunctions();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +30,22 @@ public class Register2 extends AppCompatActivity {
         final EditText lname = findViewById(R.id.last_name);
         final EditText empid = findViewById(R.id.employee_id);
         final EditText comp = findViewById(R.id.company_name);
+        //ImageView backbtn = findViewById(R.id.back_reg_2);
+
+        setTitle("Register");
+
+        pubfunc.don(comp);
 
         Button next = findViewById(R.id.reg_next_two);
+//        backbtn.setClickable(true);
+//        backbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Register2.this, Registration1.class));
+//
+//            }
+//
+//        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,4 +87,30 @@ public class Register2 extends AppCompatActivity {
 
     }
 
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_general, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case android.R.id.home:
+                // API 5+ solution
+                onBackPressed();
+                return true;
+            case R.id.settings:
+                break;
+            case R.id.logout:
+                break;
+
+        }
+        return true;
+    }
 }

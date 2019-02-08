@@ -1,4 +1,4 @@
-package com.agonaika.agonaika;
+package com.agonaika.agonaika.Adapters;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.agonaika.agonaika.R;
 
 public class CustomDialogClassfail {
 

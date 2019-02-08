@@ -34,14 +34,28 @@
         android:roundIcon="@mipmap/agonaikalogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Clockin2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Dashboard" />
+
+
+        </activity>
+        <activity
+            android:name=".Dashboard"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Home"
@@ -72,18 +86,30 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Registration1"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
         <activity
             android:name=".Register2"
-            android:theme="@style/AppTheme.NoActionBar" />
+          >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Registration1" />
+
+        </activity>
         <activity
             android:name=".Register3"
-            android:theme="@style/AppTheme.NoActionBar" />
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Register2" />
+        </activity>
         <activity
             android:name=".Registermain"
             android:label="@string/title_activity_registermain"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
