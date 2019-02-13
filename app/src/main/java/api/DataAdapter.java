@@ -1,12 +1,11 @@
-package com.agonaika.agonaika;
+package api;
 
 
-public class DataAdapter2
+public class DataAdapter
 {
     public String ImageURL;
     public String ImageTitle;
     public String ImageTitle2;
-    public String ImageTitle3;
 
     public String getImageUrl() {
 
@@ -28,11 +27,6 @@ public class DataAdapter2
         return ImageTitle2;
     }
 
-    public String getImageTitle3() {
-
-        return ImageTitle3;
-    }
-
     public void setImageTitle(String Imagetitlename) {
 
         this.ImageTitle = Imagetitlename;
@@ -42,8 +36,5 @@ public class DataAdapter2
 
         this.ImageTitle2 = Imagetitlename;
     }
-    public void setImageTitle3(String Imagetitlename) {
 
-        this.ImageTitle3 = Imagetitlename;
-    }
 }

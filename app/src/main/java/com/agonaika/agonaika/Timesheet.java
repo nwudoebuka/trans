@@ -3,8 +3,7 @@ package com.agonaika.agonaika;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import org.json.JSONArray;
 import java.util.ArrayList;
 import com.android.volley.VolleyError;
@@ -16,11 +15,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import api.DataAdapter;
 
 public class Timesheet extends AppCompatActivity {
 
