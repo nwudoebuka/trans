@@ -88,6 +88,7 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     }
 
     private void createTables(SQLiteDatabase db) {
+        createEmployeeTable(db);
 
 
         AgoLog.d(TAG, "Created database at path: " + db.getPath());
@@ -96,7 +97,7 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private void createEmployeeTable(SQLiteDatabase db) {
         StringBuilder createEmployee = new StringBuilder();
         createEmployee.append("CREATE TABLE ");
-        createEmployee.append("CREATE TABLE ");
+        createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
 
 
     }
