@@ -24,6 +24,11 @@ public class LocalDbHelper extends ContentProvider {
     private AgoWorkSqlOpenHelper mOpenHelper = null;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
+    public static final String AUTHORITY = "com.agonaika.mobile.provider";
+    private static final String URI_STRING = "content://" + AUTHORITY;
+
+    public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
+
 
 
     public static final String TABLE_EMPLOYEE = "EMPLOYEE";
