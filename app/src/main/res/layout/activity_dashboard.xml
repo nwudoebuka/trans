@@ -116,9 +116,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="What woul you like to do today?"
+                android:text="What would you like to do today?"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <GridView

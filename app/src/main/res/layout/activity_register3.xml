@@ -64,8 +64,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 app:srcCompat="@drawable/agonaikalogo"
                 android:layout_marginTop="2dp"
                 android:layout_gravity="center"/>
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mobile Workforce"
                 android:gravity="center"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:textColor="@color/colorPrimary"/>
 
 
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="Register"
                 android:gravity="center"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:textColor="@color/colorPrimary"/>
 
             <android.support.design.widget.TextInputLayout
