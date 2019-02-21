@@ -89,8 +89,6 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
             pragmaCursor.close();
     }
 
-
-
     private void createTables(SQLiteDatabase db) {
         createEmployeeTable(db);
 
@@ -98,25 +96,25 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
         AgoLog.d(TAG, "Created database at path: " + db.getPath());
     }
 
-    private void createEmployeeTable(SQLiteDatabase db) {
-        StringBuilder createEmployee = new StringBuilder();
-        createEmployee.append("CREATE TABLE ");
-        createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
-        createEmployee.append(" (");
-        createEmployee.append(EmployeeDbo._ID);
-        createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
-        createEmployee.append(EmployeeDbo.BADGE_NUMBER);
-        createEmployee.append(" TEXT, ");
-        createEmployee.append(EmployeeDbo.PIN);
-        createEmployee.append(" INTEGER DEFAULT(0), ");
-        createEmployee.append(EmployeeDbo.EMP_DATA);
-        createEmployee.append(" TEXT, ");
-        createEmployee.append(EmployeeDbo.INITIALS);
-        createEmployee.append(" TEXT, ");
-        createEmployee.append(EmployeeDbo.WAS_SENT);
-        createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
-        createEmployee.append(");");
-        db.execSQL(createEmployee.toString());
+        private void createEmployeeTable(SQLiteDatabase db) {
+            StringBuilder createEmployee = new StringBuilder();
+            createEmployee.append("CREATE TABLE ");
+            createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
+            createEmployee.append(" (");
+            createEmployee.append(EmployeeDbo._ID);
+            createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
+            createEmployee.append(EmployeeDbo.BADGE_NUMBER);
+            createEmployee.append(" TEXT, ");
+            createEmployee.append(EmployeeDbo.PIN);
+            createEmployee.append(" INTEGER DEFAULT(0), ");
+            createEmployee.append(EmployeeDbo.EMP_DATA);
+            createEmployee.append(" TEXT, ");
+            createEmployee.append(EmployeeDbo.INITIALS);
+            createEmployee.append(" TEXT, ");
+            createEmployee.append(EmployeeDbo.WAS_SENT);
+            createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
+            createEmployee.append(");");
+            db.execSQL(createEmployee.toString());
 
-}
+    }
 }
