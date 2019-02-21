@@ -19,9 +19,9 @@ public class EmployeeDbo extends DbBaseEntity {
     // Constants
     // ==================================================
 
-    public static final String PATH = "employees";
+    public static final String EMPLOYEE_PATH = "employees";
     public static final Uri CONTENT_URI =
-            LocalDbHelper.CONTENT_URI.buildUpon().appendPath(PATH).build();
+            LocalDbHelper.CONTENT_URI.buildUpon().appendPath(EMPLOYEE_PATH).build();
 
     // =========================
     // Columns
