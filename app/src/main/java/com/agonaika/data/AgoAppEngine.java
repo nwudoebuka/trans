@@ -8,6 +8,7 @@ import android.content.Intent;
 
 import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
 import com.agonaika.data.services.AgoIntentService;
+import com.agonaika.utils.AgoAnalytics;
 import com.agonaika.utils.AgoLog;
 
 import net.sqlcipher.database.SQLiteDatabase;
@@ -15,6 +16,7 @@ import net.sqlcipher.database.SQLiteDatabase;
 import java.util.List;
 
 public class AgoAppEngine extends Application {
+
     private static Application instance;
 
     public static void init(Application app) {
@@ -31,6 +33,27 @@ public class AgoAppEngine extends Application {
 
     public static Context getContext() {
         return getInstance();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //MultiDex.install(this); //see https://developer.android.com/studio/build/multidex
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+
+        //AgoAnalytics.initCrashlytics(this);
+        //AgoAnalytics.initNewRelic(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SQLiteDatabase.loadLibs(AgoAppEngine.this);
+            }
+        }).start();
     }
 
     public static void callService(String action){
@@ -83,9 +106,21 @@ public class AgoAppEngine extends Application {
             AgoLog.v(getContext(), "Failure opening database");
             AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
         }
-
         return db;
     }
+
+    public static SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
+        SQLiteDatabase db = null;
+
+        try {
+            db = helper.getWritableDatabase("PassDbKey");
+        } catch (Exception e) {
+            AgoLog.v(getContext(), "Failure opening database");
+            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+        }
+        return db;
+    }
+
 
     public static boolean isAppInForeground() {
         ActivityManager manager = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);

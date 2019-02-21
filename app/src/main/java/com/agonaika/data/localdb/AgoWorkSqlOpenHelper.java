@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.agonaika.data.AgoAppEngine;
 import com.agonaika.data.AgoPreferences;
+import com.agonaika.data.localdb.dbobject.EmployeeDbo;
 import com.agonaika.utils.AgoLog;
 
 import net.sqlcipher.SQLException;
@@ -20,11 +21,12 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private static AgoWorkSqlOpenHelper mInstance = null;
     private static String mDatabaseName = "";
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "AgoWork.db";
+    private static final String DATABASE_NAME = "AgoWork.db";
     private static final String TAG = AgoWorkSqlOpenHelper.class.getSimpleName();
 
     private AgoWorkSqlOpenHelper(String databaseName) {
         super(AgoAppEngine.getContext(), databaseName, null, DB_VERSION);
+
         SQLiteDatabase.loadLibs(AgoAppEngine.getContext());
     }
 
@@ -75,6 +77,11 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
 
     }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+
     private void enableSecureDeletes(SQLiteDatabase db) {
         Cursor pragmaCursor = null;
         pragmaCursor = db.rawQuery(" PRAGMA secure_delete = true ", null);
@@ -82,10 +89,7 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
             pragmaCursor.close();
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-    }
 
     private void createTables(SQLiteDatabase db) {
         createEmployeeTable(db);
@@ -98,7 +102,21 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
         StringBuilder createEmployee = new StringBuilder();
         createEmployee.append("CREATE TABLE ");
         createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
+        createEmployee.append(" (");
+        createEmployee.append(EmployeeDbo._ID);
+        createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
+        createEmployee.append(EmployeeDbo.BADGE_NUMBER);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(EmployeeDbo.PIN);
+        createEmployee.append(" INTEGER DEFAULT(0), ");
+        createEmployee.append(EmployeeDbo.EMP_DATA);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(EmployeeDbo.INITIALS);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(EmployeeDbo.WAS_SENT);
+        createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
+        createEmployee.append(");");
+        db.execSQL(createEmployee.toString());
 
-
-    }
+}
 }

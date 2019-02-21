@@ -83,21 +83,21 @@ public abstract class BaseEntity {
     }
 
     public static BaseEntity buildSingleObjectFromCursor(Class<? extends BaseEntity> classType, Cursor cursor, boolean closeCursor) {
-        ArrayList<BaseEntity> imObjects = (ArrayList<BaseEntity>) buildFromCursor(classType, cursor, closeCursor);
+        ArrayList<BaseEntity> baseEntities = (ArrayList<BaseEntity>) buildFromCursor(classType, cursor, closeCursor);
 
-        if (imObjects != null) {
-            if (imObjects.size() > 1) {
+        if (baseEntities != null) {
+            if (baseEntities.size() > 1) {
                 AgoLog.w(TAG, "Developer asked for single object, but multiple objects were found and built.",
                         "Only object at index 0 was returned!");
             }
 
-            if (imObjects.isEmpty()) {
+            if (baseEntities.isEmpty()) {
                 AgoLog.w(TAG, "Developer asked for single object, but no objects could be found.",
                         "Returning null!");
                 return null;
             }
 
-            return imObjects.get(0);
+            return baseEntities.get(0);
         }
 
         return null;
