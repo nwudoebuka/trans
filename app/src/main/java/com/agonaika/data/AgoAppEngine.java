@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.multidex.MultiDex;
 
 import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
 import com.agonaika.data.services.AgoIntentService;
@@ -31,6 +32,12 @@ public class AgoAppEngine extends Application {
 
     public static Context getContext() {
         return getInstance();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     public static void callService(String action){
