@@ -9,6 +9,8 @@ import com.agonaika.data.domain.DbBaseEntity;
 import com.agonaika.data.domain.employee.Employee;
 import com.agonaika.data.localdb.LocalDbHelper;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import java.util.ArrayList;
 
 //import org.apache.commons.lang3.NotImplementedException;
@@ -27,11 +29,36 @@ public class EmployeeDbo extends DbBaseEntity {
     // Columns
     // =========================
 
-    public static final String BADGE_NUMBER = "BadgeNumber";
-    public static final Integer PIN = 0;
-    public static final String INITIALS = "Initials";
-    public static final String EMP_DATA = "EmpData";
-    public static final String WAS_SENT = "Sent";
+    public static final String COL_BADGE_NUMBER = "BadgeNumber";
+    public static final String COL_PIN = "Pin";
+    public static final String COL_INITIALS = "Initials";
+    public static final String COL_EMP_DATA = "EmpData";
+    public static final String COL_WAS_SENT = "Sent";
+    public static final String SQL_CREATE_TABLE = createEmployeeTable();
+    public static final String TABLE_EMPLOYEE = "EMPLOYEE";
+
+
+    private static String createEmployeeTable() {
+        StringBuilder createEmployee = new StringBuilder();
+        createEmployee.append("CREATE TABLE ");
+        createEmployee.append(TABLE_EMPLOYEE);
+        createEmployee.append(" (");
+        createEmployee.append(_ID);
+        createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
+        createEmployee.append(COL_BADGE_NUMBER);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(COL_PIN);
+        createEmployee.append(" INTEGER DEFAULT(0), ");
+        createEmployee.append(COL_EMP_DATA);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(COL_INITIALS);
+        createEmployee.append(" TEXT, ");
+        createEmployee.append(COL_WAS_SENT);
+        createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
+        createEmployee.append(");");
+
+        return createEmployee.toString();
+    }
 
 
     @Override
@@ -42,7 +69,7 @@ public class EmployeeDbo extends DbBaseEntity {
             do {
                 Employee employee = new Employee();
                 employee.id = getInteger(cursor, ID);
-                employee.Sent = getBoolean(cursor, WAS_SENT);
+                employee.Sent = getBoolean(cursor, COL_WAS_SENT);
                 employees.add(employee);
             } while (cursor.moveToNext());
         }

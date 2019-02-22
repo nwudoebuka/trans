@@ -11,7 +11,6 @@ import com.agonaika.data.AgoPreferences;
 import com.agonaika.data.localdb.dbobject.EmployeeDbo;
 import com.agonaika.utils.AgoLog;
 
-import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 //import net.sqlcipher.database.SQLiteCursor;
@@ -21,7 +20,7 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private static AgoWorkSqlOpenHelper mInstance = null;
     private static String mDatabaseName = "";
     private static final int DB_VERSION = 1;
-    private static final String DATABASE_NAME = "AgoWork.db";
+    private static final String DATABASE_NAME = "AgoWorkMobile.db";
     private static final String TAG = AgoWorkSqlOpenHelper.class.getSimpleName();
 
     private AgoWorkSqlOpenHelper(String databaseName) {
@@ -103,18 +102,19 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
             createEmployee.append(" (");
             createEmployee.append(EmployeeDbo._ID);
             createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
-            createEmployee.append(EmployeeDbo.BADGE_NUMBER);
+            createEmployee.append(EmployeeDbo.COL_BADGE_NUMBER);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.PIN);
+            createEmployee.append(EmployeeDbo.COL_PIN);
             createEmployee.append(" INTEGER DEFAULT(0), ");
-            createEmployee.append(EmployeeDbo.EMP_DATA);
+            createEmployee.append(EmployeeDbo.COL_EMP_DATA);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.INITIALS);
+            createEmployee.append(EmployeeDbo.COL_INITIALS);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.WAS_SENT);
+            createEmployee.append(EmployeeDbo.COL_WAS_SENT);
             createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
             createEmployee.append(");");
-            db.execSQL(createEmployee.toString());
+            //db.execSQL(createEmployee.toString());
+            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);
 
     }
 }
