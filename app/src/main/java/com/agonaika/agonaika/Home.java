@@ -17,6 +17,7 @@ TextView register;
         setContentView(R.layout.activity_home);
         login_email = findViewById(R.id.email_login);
         register = findViewById(R.id.register_label);
+        setTitle("Login");
 
         login_email.setOnClickListener(new View.OnClickListener() {
             @Override
