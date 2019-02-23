@@ -9,12 +9,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
+
 public class MainActivity extends AppCompatActivity {
+
+    private AgoWorkSqlOpenHelper mDbOpenHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mDbOpenHelper = AgoWorkSqlOpenHelper.getInstance();
 
         StartAnimations();
     }
@@ -42,5 +48,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }, secondsDelayed * 3000);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
     }
 }

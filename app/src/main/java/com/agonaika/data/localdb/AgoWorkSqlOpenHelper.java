@@ -23,6 +23,8 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "AgoWorkMobile.db";
     private static final String TAG = AgoWorkSqlOpenHelper.class.getSimpleName();
 
+    private EmployeeDbo mEmployeeDbo;
+
     private AgoWorkSqlOpenHelper(String databaseName) {
         super(AgoAppEngine.getContext(), databaseName, null, DB_VERSION);
 
@@ -96,7 +98,11 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     }
 
         private void createEmployeeTable(SQLiteDatabase db) {
-            StringBuilder createEmployee = new StringBuilder();
+        //mEmployeeDbo = new EmployeeDbo();
+        //db.execSQL(mEmployeeDbo.SQL_CREATE_TABLE);
+            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);
+
+            /*StringBuilder createEmployee = new StringBuilder();
             createEmployee.append("CREATE TABLE ");
             createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
             createEmployee.append(" (");
@@ -114,7 +120,7 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
             createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
             createEmployee.append(");");
             //db.execSQL(createEmployee.toString());
-            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);
+            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);*/
 
     }
 }

@@ -9,8 +9,6 @@ import com.agonaika.data.domain.DbBaseEntity;
 import com.agonaika.data.domain.employee.Employee;
 import com.agonaika.data.localdb.LocalDbHelper;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
 import java.util.ArrayList;
 
 //import org.apache.commons.lang3.NotImplementedException;
@@ -34,14 +32,14 @@ public class EmployeeDbo extends DbBaseEntity {
     public static final String COL_INITIALS = "Initials";
     public static final String COL_EMP_DATA = "EmpData";
     public static final String COL_WAS_SENT = "Sent";
-    public static final String SQL_CREATE_TABLE = createEmployeeTable();
-    public static final String TABLE_EMPLOYEE = "EMPLOYEE";
+    public static final String SQL_CREATE_TABLE = createEmployeeTableSql();
+    public static final String TABLE_NAME = "EMPLOYEE";
 
 
-    private static String createEmployeeTable() {
+    private static String createEmployeeTableSql() {
         StringBuilder createEmployee = new StringBuilder();
         createEmployee.append("CREATE TABLE ");
-        createEmployee.append(TABLE_EMPLOYEE);
+        createEmployee.append(TABLE_NAME);
         createEmployee.append(" (");
         createEmployee.append(_ID);
         createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");

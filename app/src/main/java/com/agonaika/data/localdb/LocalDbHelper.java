@@ -29,6 +29,10 @@ public class LocalDbHelper extends ContentProvider {
 
     public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
     public static final String TABLE_EMPLOYEE = "EMPLOYEE";
+    public static final String TABLE_DEPT = "DEPARTMENT";
+    public static final String TABLE_CONFIG = "MOBILECONFIGURATION";
+    public static final String TABLE_TIMEDATA = "TIMEDATA";
+    public static final String TABLE_LOCATION = "GEOLOCATION";
 
 
     @Override
