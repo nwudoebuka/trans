@@ -107,8 +107,8 @@ public class Register2 extends AppCompatActivity {
                 return true;
             case R.id.settings:
                 break;
-            case R.id.logout:
-                break;
+//            case R.id.logout:
+//                break;
 
         }
         return true;

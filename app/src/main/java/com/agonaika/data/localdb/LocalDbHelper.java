@@ -4,20 +4,23 @@ import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Loader;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.net.Uri;
+import android.os.LocaleList;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.format.Time;
-
-import com.agonaika.data.AgoAppEngine;
+import com.agonaika.utils.AgoLog;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteQueryBuilder;
 
 public class LocalDbHelper extends ContentProvider {
+
+    private static LocalDbHelper anInstance = null;
 
     private static final String TAG = LocalDbHelper.class.getSimpleName();
     private ContentResolver mResolver;
@@ -28,11 +31,18 @@ public class LocalDbHelper extends ContentProvider {
     private static final String URI_STRING = "content://" + AUTHORITY;
 
     public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
-
-
-
     public static final String TABLE_EMPLOYEE = "EMPLOYEE";
+    public static final String TABLE_DEPT = "DEPARTMENT";
+    public static final String TABLE_CONFIG = "MOBILECONFIGURATION";
+    public static final String TABLE_TIMEDATA = "TIMEDATA";
+    public static final String TABLE_LOCATION = "GEOLOCATION";
 
+    public static LocalDbHelper getInstance() {
+        if (anInstance == null) {
+            anInstance = new LocalDbHelper();
+        }
+        return anInstance;
+    }
 
     @Override
     public boolean onCreate() {
@@ -57,7 +67,7 @@ public class LocalDbHelper extends ContentProvider {
     @Override
     public synchronized Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        SQLiteDatabase db = AgoAppEngine.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = null;
         String WHERE_FORMAT = "%1$s=\'%2$s\'";
         String id = uri.getPathSegments().get(uri.getPathSegments().size() - 1);
@@ -83,7 +93,7 @@ public class LocalDbHelper extends ContentProvider {
         Uri ret = null;
 
         // Get the database and run the query
-        SQLiteDatabase db = AgoAppEngine.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
 
         long item_id = -1;
         boolean shouldNotify = true;
@@ -97,7 +107,7 @@ public class LocalDbHelper extends ContentProvider {
         int count = 0;
 
         // Get the database and run the query
-        SQLiteDatabase db = AgoAppEngine.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
 
         int match = sUriMatcher.match(uri);
 
@@ -108,7 +118,7 @@ public class LocalDbHelper extends ContentProvider {
     public synchronized int delete(@NonNull Uri uri, String where, String[] whereArgs) {
         int count = 0;
         // Get the database and run the query
-        SQLiteDatabase db = AgoAppEngine.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         Cursor c = null;
         return count;
     }
@@ -117,7 +127,7 @@ public class LocalDbHelper extends ContentProvider {
     public synchronized int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
         mOpenHelper = AgoWorkSqlOpenHelper.getInstance();
 
-        SQLiteDatabase db = AgoAppEngine.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
 
         db.beginTransaction();
         String table_name = "";
@@ -127,5 +137,42 @@ public class LocalDbHelper extends ContentProvider {
         db.endTransaction();
 
         return 1;
+    }
+
+    public SQLiteDatabase getReadableDatabase() {
+        SQLiteDatabase db = null;
+
+        try {
+            db = AgoWorkSqlOpenHelper.getInstance().getReadableDatabase("PassDbKey");//TODO
+        } catch (Exception e) {
+            AgoLog.v(getContext(), "Failure opening database");
+            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+        }
+
+        return db;
+    }
+
+    public SQLiteDatabase getWritableDatabase() {
+        SQLiteDatabase db = null;
+
+        try {
+            db = AgoWorkSqlOpenHelper.getInstance().getWritableDatabase("PassDbKey");//TODO
+        } catch (Exception e) {
+            AgoLog.v(getContext(), "Failure opening database");
+            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+        }
+        return db;
+    }
+
+    public SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
+        SQLiteDatabase db = null;
+
+        try {
+            db = helper.getWritableDatabase("PassDbKey");
+        } catch (Exception e) {
+            AgoLog.v(getContext(), "Failure opening database");
+            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+        }
+        return db;
     }
 }

@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 
-import com.agonaika.data.AgoAppEngine;
+//import com.agonaika.data.AgoAppEngine;
 
 public class CommonUtils {
 
-    public static boolean isInDebugMode() {
+   /* public static boolean isInDebugMode() {
         if (isEmulator()) {
             return true;
         }
         return isInDebugMode(AgoAppEngine.getContext());
-    }
+    }*/
 
     public static boolean isEmulator() {
         return Build.PRODUCT.toLowerCase().contains("sdk")

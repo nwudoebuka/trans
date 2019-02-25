@@ -1,5 +1,6 @@
 package com.agonaika.data.localdb;
 
+import android.app.Application;
 import android.content.Context;
 //import android.database.sqlite.SQLiteDatabase;
 //import android.database.sqlite.SQLiteOpenHelper;
@@ -11,7 +12,6 @@ import com.agonaika.data.AgoPreferences;
 import com.agonaika.data.localdb.dbobject.EmployeeDbo;
 import com.agonaika.utils.AgoLog;
 
-import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 //import net.sqlcipher.database.SQLiteCursor;
@@ -21,13 +21,24 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private static AgoWorkSqlOpenHelper mInstance = null;
     private static String mDatabaseName = "";
     private static final int DB_VERSION = 1;
-    private static final String DATABASE_NAME = "AgoWork.db";
+    private static final String DATABASE_NAME = "AgoWorkMobile.db";
     private static final String TAG = AgoWorkSqlOpenHelper.class.getSimpleName();
+
+    private Application App;
+
+    private EmployeeDbo mEmployeeDbo;
 
     private AgoWorkSqlOpenHelper(String databaseName) {
         super(AgoAppEngine.getContext(), databaseName, null, DB_VERSION);
 
         SQLiteDatabase.loadLibs(AgoAppEngine.getContext());
+
+        //App.getApplicationContext();
+    }
+
+    public AgoWorkSqlOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DB_VERSION);
+
     }
 
     public static synchronized AgoWorkSqlOpenHelper getInstance() {
@@ -97,24 +108,29 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     }
 
         private void createEmployeeTable(SQLiteDatabase db) {
-            StringBuilder createEmployee = new StringBuilder();
+        //mEmployeeDbo = new EmployeeDbo();
+        //db.execSQL(mEmployeeDbo.SQL_CREATE_TABLE);
+            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);
+
+            /*StringBuilder createEmployee = new StringBuilder();
             createEmployee.append("CREATE TABLE ");
             createEmployee.append(LocalDbHelper.TABLE_EMPLOYEE);
             createEmployee.append(" (");
             createEmployee.append(EmployeeDbo._ID);
             createEmployee.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
-            createEmployee.append(EmployeeDbo.BADGE_NUMBER);
+            createEmployee.append(EmployeeDbo.COL_BADGE_NUMBER);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.PIN);
+            createEmployee.append(EmployeeDbo.COL_PIN);
             createEmployee.append(" INTEGER DEFAULT(0), ");
-            createEmployee.append(EmployeeDbo.EMP_DATA);
+            createEmployee.append(EmployeeDbo.COL_EMP_DATA);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.INITIALS);
+            createEmployee.append(EmployeeDbo.COL_INITIALS);
             createEmployee.append(" TEXT, ");
-            createEmployee.append(EmployeeDbo.WAS_SENT);
+            createEmployee.append(EmployeeDbo.COL_WAS_SENT);
             createEmployee.append(" INTEGER NOT NULL DEFAULT(0), ");
             createEmployee.append(");");
-            db.execSQL(createEmployee.toString());
+            //db.execSQL(createEmployee.toString());
+            db.execSQL(EmployeeDbo.SQL_CREATE_TABLE);*/
 
     }
 }
