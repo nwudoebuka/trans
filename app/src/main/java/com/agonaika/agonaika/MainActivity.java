@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDbOpenHelper = AgoWorkSqlOpenHelper.getInstance();
+        //mDbOpenHelper = AgoWorkSqlOpenHelper.getInstance();
 
         StartAnimations();
     }
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        mDbOpenHelper.close();
+        //mDbOpenHelper.close();
         super.onDestroy();
     }
 }

@@ -11,7 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.agonaika.data.AgoAppEngine;
+//import com.agonaika.data.AgoAppEngine;
 
 import java.io.IOException;
 import java.security.KeyStore;
@@ -34,7 +34,7 @@ public class DeviceInfo {
     private static String sDeviceName;
     private static String sPlatformDescription;
 
-    static {
+    /*static {
         final Context context = AgoAppEngine.getContext();
 
         String androidDeviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -49,9 +49,9 @@ public class DeviceInfo {
         final Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         displayMetrics = new DisplayMetrics();
         display.getMetrics(displayMetrics);
-    }
+    }*/
 
-    public static boolean hasConnection() {
+   /* public static boolean hasConnection() {
         ConnectivityManager manager = (ConnectivityManager) AgoAppEngine.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (manager != null) {
@@ -59,7 +59,7 @@ public class DeviceInfo {
             return info != null && info.isConnected();
         }
         return false;
-    }
+    }*/
 
     public static String getDeviceId() {
         return sDeviceId;

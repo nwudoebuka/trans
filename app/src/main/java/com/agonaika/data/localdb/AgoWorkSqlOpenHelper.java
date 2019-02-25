@@ -1,5 +1,6 @@
 package com.agonaika.data.localdb;
 
+import android.app.Application;
 import android.content.Context;
 //import android.database.sqlite.SQLiteDatabase;
 //import android.database.sqlite.SQLiteOpenHelper;
@@ -23,12 +24,21 @@ public class AgoWorkSqlOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "AgoWorkMobile.db";
     private static final String TAG = AgoWorkSqlOpenHelper.class.getSimpleName();
 
+    private Application App;
+
     private EmployeeDbo mEmployeeDbo;
 
     private AgoWorkSqlOpenHelper(String databaseName) {
         super(AgoAppEngine.getContext(), databaseName, null, DB_VERSION);
 
         SQLiteDatabase.loadLibs(AgoAppEngine.getContext());
+
+        //App.getApplicationContext();
+    }
+
+    public AgoWorkSqlOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DB_VERSION);
+
     }
 
     public static synchronized AgoWorkSqlOpenHelper getInstance() {
