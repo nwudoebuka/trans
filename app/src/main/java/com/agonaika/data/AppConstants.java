@@ -18,4 +18,8 @@ public class AppConstants {
     public static final int MSG_ON_NETWORK_STATE_CHANGE = 0x00001A;
     public static final int MSG_GET_VERSION = 0x00001B;
     public static final int MSG_ON_LOGOUT = 0x000017;
+
+    public static final int LOGIN_FAILURE_WITH_MESSSAGE = 0x000008;
+
+    public static final String RSA_KEYSTORE = "ago_keys";
 }
