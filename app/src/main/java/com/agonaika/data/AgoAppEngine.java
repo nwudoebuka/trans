@@ -39,7 +39,7 @@ public class AgoAppEngine extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        //MultiDex.install(this); //see https://developer.android.com/studio/build/multidex
+        MultiDex.install(this); //see https://developer.android.com/studio/build/multidex
     }
 
     @Override

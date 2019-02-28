@@ -22,6 +22,12 @@ public class AgoPreferences {
     public static final String LAST_LOGIN_MEMBER = "last_login_member";
     public static final String LAST_LOGIN_USER = "last_login_user";
 
+    public static final String PREF_LAST_GROUP = "last_login_affiliate";
+    public static final String PREF_LAST_USER = "last_login_username";
+    public static final String PREF_LAST_PASSWORD = "last_login_password";
+
+    public static final String PREF_QUICK_PASSCODE = "QuickPasscode";
+
 
     public static boolean getBoolean(String key, boolean defaultValue) {
         return getSharedPreferences().getBoolean(key, defaultValue);
@@ -63,5 +69,11 @@ public class AgoPreferences {
         }
 
         return mSharedPreferences;
+    }
+
+    public static String getKeyForCurrentUser(String baseKey) {
+        String group = getString(AgoPreferences.PREF_LAST_GROUP, "");
+        String user = getString(AgoPreferences.PREF_LAST_USER, "");
+        return (group + user + baseKey);
     }
 }
