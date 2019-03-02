@@ -5,6 +5,8 @@ package api;
 import java.util.List;
 import java.util.Map;
 
+import model.Loginresponse;
+import model.Loginresquest;
 import model.Registerrequest;
 import model.Registerresp;
 import okhttp3.MultipartBody;
@@ -32,6 +34,8 @@ public interface ApiInterface {
 
     @POST("api/registrations")
     Call<Registerresp> registeruser(@Body Registerrequest reg);
+    @POST("api/login")
+    Call<Loginresponse> loginuser(@Body Loginresquest login);
 
 
     //@GET("api/v1/feature/android_version/")

@@ -109,6 +109,15 @@
             android:name=".Registermain"
             android:label="@string/title_activity_registermain"
             android:theme="@style/AppTheme.NoActionBar" />
+        <provider
+            android:authorities="com.agonaika.data.localdb"
+            android:name="com.agonaika.data.localdb.Employeesqlitedb">
+        </provider>
+
+        <provider
+            android:authorities="com.agonaika.data.test.BaseContentProvider"
+            android:name="com.agonaika.data.test.BaseContentProvider"/>
+
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.multidex.MultiDex;
 
-import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
+//import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
 import com.agonaika.data.services.AgoIntentService;
 import com.agonaika.utils.AgoAnalytics;
 import com.agonaika.utils.AgoLog;
@@ -89,10 +89,10 @@ public class AgoAppEngine extends Application {
         SQLiteDatabase db = null;
 
         try {
-            db = AgoWorkSqlOpenHelper.getInstance().getReadableDatabase("PassDbKey");//TODO
+            //db = AgoWorkSqlOpenHelper.getInstance().getReadableDatabase("PassDbKey");//TODO
         } catch (Exception e) {
             AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+            //AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
         }
 
         return db;
@@ -102,25 +102,25 @@ public class AgoAppEngine extends Application {
         SQLiteDatabase db = null;
 
         try {
-            db = AgoWorkSqlOpenHelper.getInstance().getWritableDatabase("PassDbKey");//TODO
+            //db = AgoWorkSqlOpenHelper.getInstance().getWritableDatabase("PassDbKey");//TODO
         } catch (Exception e) {
             AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+            //AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
         }
         return db;
     }
 
-    public static SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
-        SQLiteDatabase db = null;
-
-        try {
-            db = helper.getWritableDatabase("PassDbKey");
-        } catch (Exception e) {
-            AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
-        }
-        return db;
-    }
+//    public static SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
+//        SQLiteDatabase db = null;
+//
+//        try {
+//            db = helper.getWritableDatabase("PassDbKey");
+//        } catch (Exception e) {
+//            AgoLog.v(getContext(), "Failure opening database");
+//            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+//        }
+//        return db;
+//    }
 
 
     public static boolean isAppInForeground() {

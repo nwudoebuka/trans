@@ -1,5 +1,6 @@
 package com.agonaika.utils;
 
+import android.content.Context;
 import android.util.Log;
 
 public class AgoLog {
@@ -8,8 +9,8 @@ public class AgoLog {
         d(tag.getClass().getSimpleName(), messages);
     }
 
-    public static void d(String TAG, Object... messages) {
-        if (CommonUtils.isInDebugMode()) {
+    public static void d(Context context,String TAG, Object... messages) {
+        if (CommonUtils.isInDebugMode(context)) {
             for (Object message : messages) {
                 Log.d(TAG, getToPrintFromObject(message));
             }
@@ -20,8 +21,8 @@ public class AgoLog {
         i(tag.getClass().getSimpleName(), messages);
     }
 
-    public static void i(String TAG, Object... messages) {
-        if (CommonUtils.isInDebugMode()) {
+    public static void i(Context context,String TAG, Object... messages) {
+        if (CommonUtils.isInDebugMode(context)) {
             for (Object message : messages) {
                 Log.i(TAG, getToPrintFromObject(message));
             }
@@ -32,14 +33,14 @@ public class AgoLog {
         e(tag.getClass().getSimpleName(), messages);
     }
 
-    public static void e(String TAG, Object... messages) {
-        if (CommonUtils.isInDebugMode()) {
+    public static void e(  Context context,String TAG, Object... messages) {
+        if (CommonUtils.isInDebugMode(context)) {
             for (Object message : messages) {
                 Log.e(TAG, getToPrintFromObject(message));
             }
         } else {
             for (Object message : messages) {
-                AgoAnalytics.leaveBreadcrumb("AgoLog" + getToPrintFromObject(message));
+                AgoAnalytics.leaveBreadcrumb("AgoLog" + getToPrintFromObject(message),context);
             }
         }
     }
@@ -48,8 +49,8 @@ public class AgoLog {
         v(tag.getClass().getSimpleName(), messages);
     }
 
-    public static void v(String TAG, Object... messages) {
-        if (CommonUtils.isInDebugMode()) {
+    public static void v( Context context,String TAG,Object... messages) {
+        if (CommonUtils.isInDebugMode(context)) {
             for (Object message : messages) {
                 Log.v(TAG, getToPrintFromObject(message));
             }
@@ -60,8 +61,8 @@ public class AgoLog {
         w(tag.getClass().getSimpleName(), messages);
     }
 
-    public static void w(String TAG, Object... messages) {
-        if (CommonUtils.isInDebugMode()) {
+    public static void w(Context context,String TAG, Object... messages) {
+        if (CommonUtils.isInDebugMode(context)) {
             for (Object message : messages) {
                 Log.w(TAG, getToPrintFromObject(message));
             }

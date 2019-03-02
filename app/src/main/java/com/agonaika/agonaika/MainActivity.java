@@ -9,11 +9,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
+//import com.agonaika.data.localdb.AgoWorkSqlOpenHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AgoWorkSqlOpenHelper mDbOpenHelper;
+    //private AgoWorkSqlOpenHelper mDbOpenHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

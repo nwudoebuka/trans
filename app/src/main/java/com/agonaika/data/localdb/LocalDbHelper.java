@@ -24,10 +24,10 @@ public class LocalDbHelper extends ContentProvider {
 
     private static final String TAG = LocalDbHelper.class.getSimpleName();
     private ContentResolver mResolver;
-    private AgoWorkSqlOpenHelper mOpenHelper = null;
+    //private AgoWorkSqlOpenHelper mOpenHelper = null;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-    public static final String AUTHORITY = "com.agonaika.mobile.provider";
+    public static final String AUTHORITY = "com.agonaika.data.localdb.LocalDbHelper";
     private static final String URI_STRING = "content://" + AUTHORITY;
 
     public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
@@ -36,6 +36,17 @@ public class LocalDbHelper extends ContentProvider {
     public static final String TABLE_CONFIG = "MOBILECONFIGURATION";
     public static final String TABLE_TIMEDATA = "TIMEDATA";
     public static final String TABLE_LOCATION = "GEOLOCATION";
+
+
+    static final int EMPLOYEE = 1;
+    static final int EMPLOYEE_ID = 2;
+
+    static final UriMatcher uriMatcher;
+    static{
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(AUTHORITY, "EMPLOYEE", EMPLOYEE);
+        uriMatcher.addURI(AUTHORITY, "EMPLOYEE/#", EMPLOYEE_ID);
+    }
 
     public static LocalDbHelper getInstance() {
         if (anInstance == null) {
@@ -52,16 +63,28 @@ public class LocalDbHelper extends ContentProvider {
     }
 
     public void shutdown() {
-        if (mOpenHelper != null) {
-            mOpenHelper.close();
-            mOpenHelper = null;
-        }
+//        if (mOpenHelper != null) {
+//            mOpenHelper.close();
+//            mOpenHelper = null;
+//        }
     }
 
     @Override
     public String getType(Uri uri) {
-
-        return "";
+        switch (uriMatcher.match(uri)){
+            /**
+             * Get all student records
+             */
+            case EMPLOYEE:
+                return "vnd.android.cursor.dir/vnd.com.agonaika.EMPLOYEE";
+            /**
+             * Get a particular student
+             */
+            case EMPLOYEE_ID:
+                return "vnd.android.cursor.item/vnd.com.agonaika.EMPLOYEE";
+            default:
+                throw new IllegalArgumentException("Unsupported URI: " + uri);
+        }
     }
 
     @Override
@@ -125,7 +148,7 @@ public class LocalDbHelper extends ContentProvider {
 
     @Override
     public synchronized int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
-        mOpenHelper = AgoWorkSqlOpenHelper.getInstance();
+        //mOpenHelper = AgoWorkSqlOpenHelper.getInstance();
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -143,10 +166,10 @@ public class LocalDbHelper extends ContentProvider {
         SQLiteDatabase db = null;
 
         try {
-            db = AgoWorkSqlOpenHelper.getInstance().getReadableDatabase("PassDbKey");//TODO
+            //db = AgoWorkSqlOpenHelper.getInstance().getReadableDatabase("PassDbKey");//TODO
         } catch (Exception e) {
             AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+            //AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
         }
 
         return db;
@@ -156,23 +179,23 @@ public class LocalDbHelper extends ContentProvider {
         SQLiteDatabase db = null;
 
         try {
-            db = AgoWorkSqlOpenHelper.getInstance().getWritableDatabase("PassDbKey");//TODO
+            //db = AgoWorkSqlOpenHelper.getInstance().getWritableDatabase("PassDbKey");//TODO
         } catch (Exception e) {
             AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+            //AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
         }
         return db;
     }
 
-    public SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
-        SQLiteDatabase db = null;
-
-        try {
-            db = helper.getWritableDatabase("PassDbKey");
-        } catch (Exception e) {
-            AgoLog.v(getContext(), "Failure opening database");
-            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
-        }
-        return db;
-    }
+//    public SQLiteDatabase getWritableDatabase(AgoWorkSqlOpenHelper helper) {
+//        SQLiteDatabase db = null;
+//
+//        try {
+//            db = helper.getWritableDatabase("PassDbKey");
+//        } catch (Exception e) {
+//            AgoLog.v(getContext(), "Failure opening database");
+//            AgoWorkSqlOpenHelper.removeCurrentDatabase(getContext());
+//        }
+//        return db;
+//    }
 }
