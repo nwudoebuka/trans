@@ -21,17 +21,65 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     private boolean isUpgrade = false;
 
-    public static final String EMPLOYEE_TABLE_NAME = "employee";
+    public static final String USER_SIGN_IN_TABLE_NAME = "usersignin";
+    //public static final String MEMBER_TABLE_NAME = "member";
 
-    public static final String USER_TABLE_NAME = "user";
+    public static final String AFFILIATE_TABLE_NAME = "affiliate";
 
     public static final String LOG_TAG_SQLITE_DB = "LOG_TAG_SQLITE_DB";
 
     static final String CREATE_DB_TABLE1 =
-            " CREATE TABLE " + EMPLOYEE_TABLE_NAME +
+            " CREATE TABLE " + USER_SIGN_IN_TABLE_NAME +
                     " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    " name TEXT NOT NULL, " +
-                    " grade TEXT NOT NULL);";
+                    " userId TEXT NOT NULL, " +
+                    " employeeId TEXT NOT NULL, " +
+                    " firstName TEXT NOT NULL, " +
+                    " lastName TEXT NOT NULL, " +
+                    " email TEXT NOT NULL, " +
+                    "phone TEXT NOT NULL, " +
+                    "affiliateId TEXT NOT NULL, " +
+                    "affiliateName TEXT NOT NULL, " +
+                    "siteId TEXT NOT NULL, " +
+                    "siteName TEXT NOT NULL, " +
+                    "primaryDeptId TEXT NOT NULL, " +
+                    "primaryDeptName TEXT NOT NULL, " +
+                    "mostUsedDeptId TEXT NOT NULL, " +
+                    "mostUsedDeptName TEXT NOT NULL, " +
+                    "ein TEXT NOT NULL, " +
+                    "clockStatus TEXT NOT NULL, " +
+                    "phoneCarrier TEXT NOT NULL, " +
+                    "photoFileName TEXT NOT NULL, " +
+                    "isScheduled TEXT NOT NULL, " +
+                    "isMobileOnlyEmployee TEXT NOT NULL, " +
+                    "member TEXT NOT NULL, " +
+                    "memberId TEXT NOT NULL, " +
+                    "memberCode TEXT NOT NULL, " +
+                    "memberName TEXT NOT NULL, " +
+                    "displayName TEXT NOT NULL, " +
+                    "memberType TEXT NOT NULL, " +
+                    "webImageUrl TEXT NOT NULL, " +
+                    "useLocationTimeEntry TEXT NOT NULL, " +
+                    "enablePto TEXT NOT NULL, " +
+                    "affiliates TEXT NOT NULL, " +
+                    "config TEXT NOT NULL, " +
+                    "syncIntervalMinutes TEXT NOT NULL, " +
+                    "updateIntervalMinutes TEXT NOT NULL, " +
+                    "allowPhotoCapture TEXT NOT NULL, " +
+                    "reasons TEXT NOT NULL, " +
+                    "depts TEXT NOT NULL, " +
+                    "timeHistory TEXT NOT NULL);";
+
+
+    static final String CREATE_DB_TABLE2 =
+                    " CREATE TABLE " + AFFILIATE_TABLE_NAME +
+                    " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    " affiliateId TEXT NOT NULL, " +
+                    " memberId TEXT NOT NULL, " +
+                    " affiliateName TEXT NOT NULL, " +
+                    " displayName TEXT NOT NULL);";
+
+
+
     /*
      *  context : Android activity context object.
      *  name : SQLite database name.
@@ -49,15 +97,17 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
      * */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        this.buildCreateTableSql();
+        //this.buildCreateTableSql();
         sqLiteDatabase.execSQL(CREATE_DB_TABLE1);
+        sqLiteDatabase.execSQL(CREATE_DB_TABLE2);
 
-        Toast.makeText(ctx, "Table " + EMPLOYEE_TABLE_NAME + " is created successfully. ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx, "Table " + AFFILIATE_TABLE_NAME + " is created successfully. ", Toast.LENGTH_SHORT).show();
 
         // Create book category table only when sqlite upgrade.
         if(isUpgrade) {
-            sqLiteDatabase.execSQL(createUserTableSql);
-            Toast.makeText(ctx, "Table " + USER_TABLE_NAME + " is created successfully. ", Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.execSQL(CREATE_DB_TABLE1);
+            sqLiteDatabase.execSQL(CREATE_DB_TABLE2);
+            Toast.makeText(ctx, "Table " + AFFILIATE_TABLE_NAME + " is created successfully. ", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -68,8 +118,8 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         Toast.makeText(ctx, "SQLiteDBHelper onUpgrade() method is invoked.", Toast.LENGTH_SHORT).show();
 
         // Drop table first if exist.
-        sqLiteDatabase.execSQL("drop table if exists " + EMPLOYEE_TABLE_NAME);
-        sqLiteDatabase.execSQL("drop table if exists " + USER_TABLE_NAME);
+        sqLiteDatabase.execSQL("drop table if exists " + USER_SIGN_IN_TABLE_NAME);
+        sqLiteDatabase.execSQL("drop table if exists " + AFFILIATE_TABLE_NAME);
 
         if(newVersion > oldVersion)
         {
@@ -88,7 +138,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
         // Create table sql.
         employeeSqlBuf.append("create table ");
-        employeeSqlBuf.append(EMPLOYEE_TABLE_NAME);
+        employeeSqlBuf.append(USER_SIGN_IN_TABLE_NAME);
         employeeSqlBuf.append("( id integer primary key autoincrement,");
         employeeSqlBuf.append(" name text,");
         employeeSqlBuf.append(" member text");
@@ -103,7 +153,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
         // Create table sql.
         userSqlBuf.append("create table ");
-        userSqlBuf.append(USER_TABLE_NAME);
+        userSqlBuf.append(AFFILIATE_TABLE_NAME);
         userSqlBuf.append("( id integer primary key autoincrement,");
         userSqlBuf.append(" last_login text, )");
         userSqlBuf.append(" status text )");

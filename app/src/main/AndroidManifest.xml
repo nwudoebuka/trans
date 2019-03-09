@@ -2,30 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agonaika.agonaika">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <uses-feature
         android:name="android.hardware.camera2"
-        android:required="true"/>
+        android:required="true" />
     <uses-feature
         android:name="android.permission.READ_PHONE_STATE"
-        android:required="false"/>
+        android:required="false" />
+<uses-feature android:name="android.hardware.location.gps"/>
     <uses-feature
         android:name="android.permission.VIBRATE"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.permission.CALL_PHONE"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.telephony"
-        android:required="false"/>
-
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +35,10 @@
         android:roundIcon="@mipmap/agonaikalogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Test">
+
+
+        </activity>
         <activity android:name=".Clockin2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,10 +46,7 @@
         </activity>
         <activity
             android:name=".Dashboard"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -54,11 +56,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".Home"
-        />
+        <activity android:name=".Home" />
         <activity android:name=".Loginemail" />
         <activity android:name=".Facercognition" />
         <activity
@@ -90,17 +89,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Home" />
         </activity>
-        <activity
-            android:name=".Register2"
-          >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Registration1" />
-
+        <activity android:name=".Register2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Registration1" />
         </activity>
-        <activity
-            android:name=".Register3"
-            >
+        <activity android:name=".Register3">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Register2" />
@@ -109,15 +103,13 @@
             android:name=".Registermain"
             android:label="@string/title_activity_registermain"
             android:theme="@style/AppTheme.NoActionBar" />
-        <provider
-            android:authorities="com.agonaika.data.localdb"
-            android:name="com.agonaika.data.localdb.Employeesqlitedb">
-        </provider>
 
         <provider
-            android:authorities="com.agonaika.data.test.BaseContentProvider"
-            android:name="com.agonaika.data.test.BaseContentProvider"/>
-
+            android:name="com.agonaika.data.localdb.Employeesqlitedb"
+            android:authorities="com.agonaika.data.localdb"></provider>
+        <provider
+            android:name="com.agonaika.data.test.BaseContentProvider"
+            android:authorities="com.agonaika.data.test.BaseContentProvider" />
     </application>
 
 </manifest>

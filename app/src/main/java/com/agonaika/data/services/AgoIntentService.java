@@ -1,9 +1,13 @@
 package com.agonaika.data.services;
 
+import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.agonaika.agonaika.R;
 import com.agonaika.data.AgoController;
+import com.agonaika.data.AppConstants;
 import com.agonaika.utils.AgoLog;
 
 public class AgoIntentService extends AgoBaseIntentService {
@@ -18,11 +22,41 @@ public class AgoIntentService extends AgoBaseIntentService {
         addListener(AgoController.getInstance());
     }
 
+    public void addListener(AgoBaseIntentService listener) {
+        super.addListener(listener);
+    }
+
+    public void onError(int ErrorCode, String ErrorMessage) {
+
+        switch (ErrorCode) {
+            case AppConstants.LOGIN_FAILURE_WITH_MESSSAGE:
+                /*
+                 * Controller notified of a failed login state increment Failed
+                 * Login attempts and show dialog
+                 */
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                /*builder.setMessage(ErrorMessage)
+                        //.setTitle(getResources().getString(R.string.TODO create login failure dialog))
+                        .setCancelable(false)
+                        //.setPositiveButton(getResources().getString(R.string.TODO Button OK),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });*/
+                AlertDialog alert = builder.create();
+                alert.show();
+                break;
+        }
+    }
+
     public interface AgoBaseIntentServiceListener {
         public void onError(int ErrorCode);
 
         public void onError(int ErrorCode, String ErrorMessage);
     }
+
 
     public interface AgoServiceListener extends AgoBaseIntentServiceListener {
 
